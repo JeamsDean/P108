@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>/*包含头文件*/
+int main()/*定义主函数*/
+{
+    char str[20][10], t[20], str1[10];/*定义一个二维数组，两个一维数组*/
+    int i, j, n = 0;/*定义整型变量*/
+    while (1)
+    {
+        scanf("%s", str1);/*读入用户输入的英文单词*/
+        if (str1[0] == '#')
+        {
+            break;/*如果第一个字符为#则退出*/
+        }
+        else/*否则*/
+        {
+            strcpy(str[n], str1);/*运用strcpy函数，将str1复制到str[n]*/
+            n++;/*n+1*/
+        }
+    }
+    for (i = 0; i < n - 1; i++)
+        for (j = 0; j < n - i - 1; j++)
+        {
+            if (strlen(str[j]) > strlen(str[j + 1]))/*比较前后两字符串的长度*/
+            {
+                strcpy(t, str[j]);
+                strcpy(str[j], str[j + 1]);
+                strcpy(str[j + 1], t);/*运用strcpy函数实行交换*/
+            }
+        }/*若前比后长，则交换顺序*/
+    for (i = 0; i < n; i++)
+    {
+        printf("%s ", str[i]);/*用for循环输出排序后的字符数组即英文句子*
+    }
+}/
+
